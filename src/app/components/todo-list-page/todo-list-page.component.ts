@@ -1,0 +1,56 @@
+import { ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { autorun, observe } from 'mobx';
+import { Observable, Subscriber, Subscription } from 'rxjs';
+import { toRxJsObservable } from 'src/app/helpers/mobx-to-observable';
+import { Todo } from 'src/app/model/todo-item';
+import { TodosFilters, TodosFilterStoreService } from 'src/app/services/todos-filter-store.service';
+import { TodosStoreService } from 'src/app/services/todos-store.service';
+
+@Component({
+  selector: 'app-todo-list-page',
+  templateUrl: './todo-list-page.component.html',
+  styleUrls: ['./todo-list-page.component.scss']
+})
+export class TodoListPageComponent implements OnInit, OnDestroy {
+  todos: Observable<Todo[]>;
+  protected dispose: Subscription;
+
+  constructor(private todosStore: TodosStoreService,
+              private todosFilteredStore: TodosFilterStoreService,
+              private cd: ChangeDetectorRef) {}
+
+  public changeTodoView(filter: TodosFilters) {
+    this.todosFilteredStore.changeTo(filter);
+    this.updateTodoSource();
+  }
+
+  public isViewActive(view) {
+    return <TodosFilters>view === this.todosFilteredStore.currentFilter;
+  }
+
+  public currentFilter() {
+    return this.todosFilteredStore.currentFilter;
+  }
+
+  public reRurnList() {
+    this.updateTodoSource();
+  }
+
+  ngOnDestroy(): void {
+    if (this.dispose) {
+      this.dispose.unsubscribe();
+    }
+  }
+
+  ngOnInit(): void {
+    this.dispose = this.todosStore.stateChange.subscribe((change) => {
+      if (change) {
+        this.updateTodoSource();
+      }
+    });
+  }
+
+  private updateTodoSource() {
+    this.todos = toRxJsObservable(() => this.todosStore.retrieveByFilter);
+  }
+}

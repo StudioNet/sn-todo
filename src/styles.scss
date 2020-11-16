@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+body, html {
+  height: 100%;
+}
+
+button,
+input {
+  box-shadow: none!important;
+  -wekit-box-shadow: none!important;
+}
+
+.input-group-xlg > .form-control:not(textarea) {
+  height: 64px;
+}
+
+ul {
+  list-style-type: none;
+}

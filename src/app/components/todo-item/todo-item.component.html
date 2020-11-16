@@ -1,0 +1,12 @@
+<div class="custom-control custom-checkbox">
+  <input
+      [id]="todo.id"
+      type="checkbox"
+      class="custom-control-input"
+      [checked]="todo.done"
+      (change)="whenItemDone.emit(todo)"
+    />
+  <label class="custom-control-label" [for]="todo.id">
+    {{ todo.title }}
+  </label>
+</div>

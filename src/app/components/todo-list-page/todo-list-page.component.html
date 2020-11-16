@@ -1,0 +1,24 @@
+<nav>
+  <div id="todos-page" class="nav nav-tabs" role="tablist">
+    <a role="tab" class="nav-link"
+       [ngClass]="{active: isViewActive('ALL')}"
+       (click)="changeTodoView('ALL')">ALL</a>
+    <a role="tab" class="nav-link"
+       [ngClass]="{active: isViewActive('ACTIVE')}"
+       (click)="changeTodoView('ACTIVE')">ACTIVE</a>
+    <a role="tab" class="nav-link"
+       [ngClass]="{active: isViewActive('COMPLETED')}"
+       (click)="changeTodoView('COMPLETED')">COMPLETED</a>
+  </div>
+  <div class="tab-content" id="nav-content" [ngSwitch]="currentFilter()">
+    <div class="tab-pane fade show active" role="tabpanel" *ngSwitchCase="'ALL'">
+      <app-todo-items [todos]="todos | async"></app-todo-items>
+    </div>
+    <div class="tab-pane fade show active" role="tabpanel" *ngSwitchCase="'ACTIVE'">
+      <app-todo-items [todos]="todos | async" (onItemChanged)="reRurnList()"></app-todo-items>
+    </div>
+    <div class="tab-pane fade show active" role="tabpanel" *ngSwitchCase="'COMPLETED'">
+      <app-todo-items [todos]="todos | async" (onItemChanged)="reRurnList()"></app-todo-items>
+    </div>
+  </div>
+</nav>
