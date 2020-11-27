@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { autorun, observe } from 'mobx';
-import { Observable, Subscriber, Subscription } from 'rxjs';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { toRxJsObservable } from 'src/app/helpers/mobx-to-observable';
 import { Todo } from 'src/app/model/todo-item';
 import { TodosFilters, TodosFilterStoreService } from 'src/app/services/todos-filter-store.service';
@@ -32,7 +31,7 @@ export class TodoListPageComponent implements OnInit, OnDestroy {
     return this.todosFilteredStore.currentFilter;
   }
 
-  public reRurnList() {
+  public updateList() {
     this.updateTodoSource();
   }
 

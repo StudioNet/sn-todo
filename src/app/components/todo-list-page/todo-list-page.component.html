@@ -15,10 +15,10 @@
       <app-todo-items [todos]="todos | async"></app-todo-items>
     </div>
     <div class="tab-pane fade show active" role="tabpanel" *ngSwitchCase="'ACTIVE'">
-      <app-todo-items [todos]="todos | async" (onItemChanged)="reRurnList()"></app-todo-items>
+      <app-todo-items [todos]="todos | async" (onItemChanged)="updateList()"></app-todo-items>
     </div>
     <div class="tab-pane fade show active" role="tabpanel" *ngSwitchCase="'COMPLETED'">
-      <app-todo-items [todos]="todos | async" (onItemChanged)="reRurnList()"></app-todo-items>
+      <app-todo-items [todos]="todos | async" (onItemChanged)="updateList()"></app-todo-items>
     </div>
   </div>
 </nav>
