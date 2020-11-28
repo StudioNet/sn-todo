@@ -4,7 +4,7 @@ import { observable, action } from "mobx";
 export type TodosFilters = 'ALL' | 'COMPLETED' | 'ACTIVE';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TodosFilterStoreService {
   @observable currentFilter: TodosFilters = 'ALL';

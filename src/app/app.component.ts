@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodosStoreService } from './services/todos-store.service';
+import { TodosStoreService } from './modules/todo/services/todos-store.service';
 
 @Component({
   selector: 'app-root',

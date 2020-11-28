@@ -37,8 +37,10 @@ export class Sut<T> {
   }
 }
 
-export function createSut<T>(componentType: Type<T>): Sut<T> {
+export function createSut<T>(componentType: Type<T>, runCheckdetectionImmediatly: boolean = true): Sut<T> {
   let fixture: ComponentFixture<T> = TestBed.createComponent<T>(componentType);
-  fixture.detectChanges();
+  if (runCheckdetectionImmediatly) {
+    fixture.detectChanges();
+  }
   return new Sut<T>(fixture.componentInstance, fixture);
 }

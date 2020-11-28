@@ -5,7 +5,7 @@ import { Todo } from '../model/todo-item';
 import { TodosFilterStoreService } from './todos-filter-store.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TodosStoreService {
 

@@ -1,30 +1,17 @@
-import { DebugElement, Type } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { setupTestModule } from 'tests/setup-test-module';
 import { createSut, Sut } from 'tests/sut';
 
 import { TodoListPageComponent } from './todo-list-page.component';
-
-import { NgModule } from '@angular/core';
-import { CommonModule, NgSwitch } from '@angular/common';
-import { TodoItemsComponent } from '../todo-items/todo-items.component';
-import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { By } from '@angular/platform-browser';
-
-@NgModule({
-  imports: [CommonModule],
-  exports: [],
-  declarations: [TodoListPageComponent, TodoItemsComponent, TodoItemComponent],
-  providers: [],
-})
-export class TodoListPageTestModule {}
+import { TodosTestModule } from '../../todo.module.spec';
+import { NgSwitch } from '@angular/common';
 
 describe('TodoListPageComponent', () => {
   let sut: Sut<TodoListPageComponent>;
   let component: TodoListPageComponent;
 
   beforeEach(async () => {
-    await setupTestModule(TodoListPageTestModule);
+    await setupTestModule(TodosTestModule);
   });
 
   beforeEach(() => {

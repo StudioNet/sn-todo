@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { toRxJsObservable } from 'src/app/helpers/mobx-to-observable';
-import { Todo } from 'src/app/model/todo-item';
-import { TodosFilters, TodosFilterStoreService } from 'src/app/services/todos-filter-store.service';
-import { TodosStoreService } from 'src/app/services/todos-store.service';
+import { Todo } from '../../model/todo-item';
+import { TodosFilters, TodosFilterStoreService } from '../../services/todos-filter-store.service';
+import { TodosStoreService } from '../../services/todos-store.service';
 
 @Component({
   selector: 'app-todo-list-page',
